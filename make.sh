@@ -15,8 +15,13 @@ if [ "x$arg" != "x" ];then
 else
 	for f in $(ls *.cpp); do
 		object=`echo $f | sed s/.cpp//g`
-		echo "g++ $f -o $object"
-		g++ $f -o $object
+		fdate=`stat -c %Y $f`
+		objdate=`stat -c %Y $object 2>/dev/null`
+		if [ "x$fdate" != "x$objdate" ];then
+			echo "g++ $f -o $object"
+			g++ $f -o $object
+			touch -r $f $object
+		fi
 	done
 fi
 
