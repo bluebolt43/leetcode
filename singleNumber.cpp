@@ -20,6 +20,6 @@ int main()
 	int A[]={1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,-1,-1};
 	Solution solution;
 	int result = solution.singleNumber(A,ARRAY_SIZE(A));
-	cout << result;
+	cout << result <<endl;
 	return 0;
 }
