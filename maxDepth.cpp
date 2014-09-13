@@ -7,11 +7,12 @@ struct TreeNode {
 	TreeNode *left;
 	TreeNode *right;
 };
-#define BFS 0
-#define DFS 1
+#define BFS 1
 class Solution {
 public:
 #if BFS
+	//TODO: To apply DFS algorithm, just change the queue type to stack type.
+	//However, it is complicated to get the depth.
     int maxDepth(TreeNode *root) {
         queue <TreeNode*> node_stack;
         TreeNode* tmp;
@@ -24,11 +25,13 @@ public:
 			return 0;
 		}
 
+		//initialize value, adding root node into queue and incrementing count & level 
 		node_stack.push(root);
 		count=node_stack.size();
 		level++;
 
 		while(count>0){
+			//Check first node in queue and remove it
 			tmp=node_stack.front();
 			if(tmp->right != NULL){
 				node_stack.push(tmp->right);
@@ -41,6 +44,7 @@ public:
 			node_stack.pop();
 			count--;
 
+			//When current level finish, we move to next level
 			if(count==0){
 				if(next_level_count!=0){
 					count=next_level_count;
@@ -52,8 +56,8 @@ public:
 
 		return level;
     }
-#endif
-#if DFS
+#else
+	//recursive
     int maxDepth(TreeNode *root) {
 		int left_level=0, right_level=0;
 
