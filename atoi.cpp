@@ -57,7 +57,7 @@ int main()
 	Solution solution;
 	cout << solution.atoi("    - 10") <<endl;
 	cout << solution.atoi("21474a836471") <<endl;
-	cout << solution.atoi( 	" -11919730356x") <<endl;
+	cout << solution.atoi(" -11919730356x") <<endl;
 	cout << INT_MIN%10 <<endl;
 	return 0;
 }
