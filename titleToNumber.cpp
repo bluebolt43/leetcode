@@ -15,6 +15,16 @@ public:
 		}
 		return result;
     }
+    string convertToTitle(int n) {
+        string result;
+        while(n>0){
+			n=n-1;//as a converter base on 26
+			//cout << n<< result << endl;
+			result = (char)(n%26+65) + result;
+			n/=26;
+		}
+		return result;
+    }
 };
 
 int main()
@@ -22,5 +32,9 @@ int main()
 
 	Solution solution;
 	cout << solution.titleToNumber("AC") << endl;
+	cout << solution.convertToTitle(52) << endl;
+	cout << solution.convertToTitle(1) << endl;
+	cout << solution.convertToTitle(26) << endl;
+	cout << solution.convertToTitle(27) << endl;
 	return 0;
 }
